@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="/static/blog/echarts-en.min.js"></script>
+
+    <link rel="stylesheet" href="/static/blog//图表.css">
+    <link rel="stylesheet" href=/static/blog/public.css">
+    <link rel="stylesheet" href="/static/blog/hexin.css">
+    <script src="../"></script>
+</head>
+<body>
+
+    <div>
+        <div id="grad1">折线图</div>
+        <div class="form">
+            <div>
+                <form action="图表.html" id="星期一">
+                    <input type="text" value="星期一" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期二" >
+                    <input type="text" value="星期二" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期三">
+                    <input type="text" value="星期三">
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期四">
+                    <input type="text" value="星期四" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期五">
+                    <input type="text" value="星期五" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期六">
+                    <input type="text" value="星期六" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+            <div>
+                <form action="" id="星期日">
+                    <input type="text" value="星期日" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                    <input type="text" value="5" >
+                </form>
+            </div>
+        </div>
+    
+    </br>
+        
+    </div>
+    <script>
+      
+      window.onload=function f(){    
+            var week=["星期一","星期二","星期三","星期四","星期五","星期六","星期日"];
+            var elements = new Array();
+            for (var i=0;i<7;i++){
+                elements[i]=new Array();
+                for ( var j = 0; j < 3; j++){//二维长度为3
+                    elements[i][j] = i + j; // 赋值，每个数组元素的值为i+j
+                }
+            }  
+            for (var i=0;i<week.length;i++){
+                var fom = document.getElementById(week[i]);
+                var tagElements = fom.getElementsByTagName("input");
+                // if(tagElements==null){
+                //     window.alert("12121")
+                // } 
+                tagElements.onblur=function()
+                {
+                    for (var j = 1; j < tagElements.length; j++){  
+                        elements[i][j-1].push(tagElements[j].value);
+                        window.alert("我被执行");
+                    }  
+                }
+                 
+            }
+          
+            return elements;   
+        }  
+    </script>
+
+<!-- <script>
+    a=f();
+    window.alert(a);
+</script> -->
+
+
+
+
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="form">
+        <div id="main" style="width: 600px;height:400px;" Onchange="change()"></div>
+        <script type="text/javascript">
+            // var myarr = [ [ 0, 1, 2 ], [ 1, 2, 3 ] , [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ], [ 1, 2, 3 ]];
+            // for (var i=0;i<7;i++){
+            //         for ( var j = 0; j < 3; j++){//二维长度为3
+            //             myarr = f(); // 赋值，每个数组元素的值为i+j
+            //         }
+            //     }  
+           
+            //  window.alert(f())
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '折线图堆叠'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['心率', '心跳', '血压']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name: '心率',
+                        type: 'line',
+                        stack: '总量',
+                        data: [100, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name: '心跳',
+                        type: 'line',
+                        stack: '总量',
+                        data: [220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name: '血压',
+                        type: 'line',
+                        stack: '总量',
+                        data: [150, 232, 201, 154, 190, 330, 410],
+                    },
+                ]
+             
+            };
+            // window.alert(typeof(option.series[0].data))
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+    </div>
+    <a class="home" href="../Html/Home.html">返回首页</a>
+</body>
+</html>

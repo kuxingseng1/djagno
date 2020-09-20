@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>First Ajax Script</title>
+	<link rel="stylesheet" href="./ajaxTextFile.css">
+	<script src="./ajaxCreateRequest.js"></script>
+	<script>
+		function getText(url){
+			var ajaxRequest = CreateRequestObject();
+			if(ajaxRequest != false){
+				ajaxRequest.onreadystatechange = function(){
+					if(ajaxRequest.readyState == 4){
+						if(ajaxRequest.status == 200 || ajaxRequest.status == 0){
+							// alert("4");
+ 
+							document.getElementById("data").innerHTML = ajaxRequest.responseText;
+						}else{
+							alert("There was a problem with the request.");
+						}
+					}
+				}//回调函数结束
+			}
+			ajaxRequest.open("GET", url, true);
+			ajaxRequest.setRequestHeader('If-Modified-Since', 'Sat, 03 Jan 2010 00:00:00GMT');//处理缓存？？
+			ajaxRequest.send(null);
+		}
+	</script>
+</head>
+<body>
+	<span style="cursor:pointer; text-decoration:underline" οnclick="getText('ajaxText.txt');">Fetch Text from a file</span>
+	<p><div id="data" class="divStyle"></div></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/blog/public.css">
+</head>
+<body style="height: 1000px">
+     <div style="display: flex; justify-content: center;align-items: center">
+            <form action="" >
+                <input id="form" type="text" value="星期一">
+                <input type="text" value="5" >
+            </form>
+            <button onclick="f()">点击</button>
+     </div>
+ <script>
+     function f() {
+         const elements = document.getElementById("form").value;
+         window.alert(elements)
+     }
+</script>
+</body>
+</html>

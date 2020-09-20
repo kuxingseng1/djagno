@@ -1,0 +1,4 @@
+写好自己的model以后可以换成这样的命令来生成数据库表：
+python manage.py makemigrations books
+然后：python manage.py sqlmigrate books 0001
+这样就可以CREATE TABLE 了。

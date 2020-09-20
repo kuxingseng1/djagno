@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(246,246,246);
+}
+.right>div{
+    padding-left: 0px;
+    margin-left: 2px;
+    padding-top: 1%;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+.right>div{
+    display: flex;
+    list-style-type:none;
+    justify-content: space-around;
+}
+.right>div>a{
+    padding-left: 5%;
+    /* background-color: rgb(173, 1, 1); */
+    color: #222831;
+    font-size: 130%;
+    flex: 1;
+    /* background-color:rgb(255, 255, 255); */
+}
+a.sansserif{
+    font-family:Arial,Helvetica,sans-serif;
+    outline:white none 2px;
+}
+p {margin:1em 0; padding:0 0 0 2em; text-indent:-2em; font:normal normal 25px/1.6em "楷体";  color:#000; } 
