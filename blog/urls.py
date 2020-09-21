@@ -12,4 +12,8 @@ urlpatterns = [
      path('图表/',views.ajax),
      path('ajaxe/', views.ajaxe),
      path('test/', views.form),
+     path('分类/', views.classification),
+     path('test/', views.form),
+     path('about/',views.about),
+
 ]

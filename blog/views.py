@@ -45,4 +45,12 @@ def ajaxe(request):
 
 
 def form(request):
-    return render(request, 'form.html')
+    return render(request, 'test.html')
+
+
+def classification(request):  # 分类
+    return render(request, '分类.html')
+
+
+def about(request):
+    return render(request, 'about.html')
